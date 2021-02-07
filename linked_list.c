@@ -26,7 +26,8 @@ List* NewList() {
 
 void DestroyList(List* this) {
     //TODO: напиши меня!
-
+    RemoveAll(this);
+    free(this);
 }
 
 void Append(List *this, int value) {
@@ -81,11 +82,36 @@ void InsertAt(List *this, int index, int value) {
 
 void RemoveAt(List *this, int index) {
     //TODO: напиши меня!
+    if (this->size == NULL) {
+        printf("Нет элементов для удаления");
+        exit(0);
+    }
 
+    Node* Prev = NULL;
+    Node* Removed = this->head;
+    int i = 0;
+
+    while (i != index) {
+        Prev = Removed;
+        Removed = Removed->next;
+        i++;
+    }
+    Prev->next = Removed->next;
+    free(Removed);
+    this->size--
 }
 void RemoveAll(List *this) {
     //TODO: напиши меня!
+    Node* temp1 = this->head;
+    Node* temp2;
 
+     while (temp1) {
+       temp2 = temp1->next;
+       free(temp1);
+       temp1 = temp2;
+    }
+
+  this->size = 0;
 }
 
 int Pop(List *this) {
