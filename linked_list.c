@@ -30,7 +30,17 @@ void DestroyList(List* this) {
 
 void Append(List *this, int value) {
     //TODO: напиши меня!
+    Node* node = malloc(sizeof(Node));
+    node->value = value;
+    node->next = NULL;
 
+    if(this->tail == NULL){
+        this->head = node;
+    }else{
+        this->tail->next = node;
+    }
+    this->tail = node;
+    this->size++;
 }
 void Prepend(List *this, int value) {
     //TODO: напиши меня!
