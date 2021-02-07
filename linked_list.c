@@ -12,12 +12,15 @@ typedef struct Node_ {
 typedef struct List_ {
   Node *head; // указатель на голову списка
   Node *tail; // указатель на хвост списка
+  int size;
   // если нужно, то добавьте дополнительные поля
 } List;
 
-List *NewList() {
-    //TODO: напиши меня!
-    
+List* NewList() {
+    List* lst = malloc(sizeof(List));
+    lst->head = lst->tail = NULL;
+    lst->size = 0;
+    return lst;
 }
 
 void DestroyList(List* this) {
