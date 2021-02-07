@@ -9,11 +9,11 @@ typedef struct Node_ {
 } Node;
 
 // Пользовательская структура, которая скрывает механизм хранения данных.
-struct List {
+typedef struct List_ {
   Node *head; // указатель на голову списка
   Node *tail; // указатель на хвост списка
   // если нужно, то добавьте дополнительные поля
-};
+} List;
 
 List *NewList() {
     //TODO: напиши меня!
@@ -66,5 +66,5 @@ int Length(const List *this) {
 }
 int GetAt(const List *this, int index) {
     //TODO: напиши меня!
-    
+
 }
