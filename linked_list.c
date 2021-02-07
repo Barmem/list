@@ -54,7 +54,9 @@ void Prepend(List *this, int value) {
 }
 void AppendAll(List *this, const List *that) {
     //TODO: напиши меня!
-
+    this->tail->next = that->head;
+    this->size += that->size;
+    this->tail = that->tail;
 }
 void InsertAt(List *this, int index, int value) {
     //TODO: напиши меня!
