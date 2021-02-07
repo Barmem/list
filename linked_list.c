@@ -1,6 +1,6 @@
 #include "list.h"
 #include <stdlib.h>
-
+#define newnode Node* node = malloc(sizeof(Node));
 // В узле списка хранится само значение value и указатель на следующий узел.
 // Эту структуру пользователи списка не должны видеть, так как она относится к внутренней реализации.
 typedef struct Node_ {
@@ -16,6 +16,7 @@ typedef struct List_ {
   // если нужно, то добавьте дополнительные поля
 } List;
 
+
 List* NewList() {
     List* lst = malloc(sizeof(List));
     lst->head = lst->tail = NULL;
@@ -30,7 +31,7 @@ void DestroyList(List* this) {
 
 void Append(List *this, int value) {
     //TODO: напиши меня!
-    Node* node = malloc(sizeof(Node));
+    newnode
     node->value = value;
     node->next = NULL;
 
@@ -44,6 +45,11 @@ void Append(List *this, int value) {
 }
 void Prepend(List *this, int value) {
     //TODO: напиши меня!
+    newnode
+    node->value = value;
+    node->next = this->head;
+    this->head = node;
+    this->size++;
 
 }
 void AppendAll(List *this, const List *that) {
