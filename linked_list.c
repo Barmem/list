@@ -98,7 +98,7 @@ void RemoveAt(List *this, int index) {
     }
     Prev->next = Removed->next;
     free(Removed);
-    this->size--
+    this->size--;
 }
 void RemoveAll(List *this) {
     //TODO: напиши меня!
@@ -138,7 +138,20 @@ int Pop(List *this) {
 }
 int Dequeue(List *this) {
     //TODO: напиши меня!
-
+    if (this->size == NULL) {
+        printf("There are no elements:::");
+        exit(0);
+    }
+    Node* node = this->head;
+    int value = node->value;
+    this->head = node->next;
+    this->size--;
+    free(node);
+    if (this->size == 0) {
+        this->head = NULL;
+        this->tail = NULL;
+    }
+    return value;
 }
 
 int Length(const List *this) {
