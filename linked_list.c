@@ -116,7 +116,25 @@ void RemoveAll(List *this) {
 
 int Pop(List *this) {
     //TODO: напиши меня!
+    if (this->size == NULL) {
+        printf("Нет элементов для удаления");
+        exit(0);
+    } else {
+        int value = this->tail->value;
+        Node* temp = this->head;
 
+        while (temp->next->next) {
+            temp = temp->next;
+        }
+
+        Node* Delete = this->tail;
+        free(Delete);
+        temp->next = NULL;
+        this->tail = temp;
+        this->size--;
+        return value;
+  }
+  return 0;
 }
 int Dequeue(List *this) {
     //TODO: напиши меня!
