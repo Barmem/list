@@ -1,6 +1,7 @@
 #include "list.h"
 #include <stdlib.h>
 #define newnode Node* node = malloc(sizeof(Node)); node->value = value;
+#define ifzero if (this->size == NULL) { printf("Нет элементов для удаления"); exit(0); }
 // В узле списка хранится само значение value и указатель на следующий узел.
 // Эту структуру пользователи списка не должны видеть, так как она относится к внутренней реализации.
 typedef struct Node_ {
@@ -82,11 +83,7 @@ void InsertAt(List *this, int index, int value) {
 
 void RemoveAt(List *this, int index) {
     //TODO: напиши меня!
-    if (this->size == NULL) {
-        printf("Нет элементов для удаления");
-        exit(0);
-    }
-
+    ifzero
     Node* Prev = NULL;
     Node* Removed = this->head;
     int i = 0;
@@ -116,10 +113,8 @@ void RemoveAll(List *this) {
 
 int Pop(List *this) {
     //TODO: напиши меня!
-    if (this->size == NULL) {
-        printf("Нет элементов для удаления");
-        exit(0);
-    } else {
+    ifzero
+    else {
         int value = this->tail->value;
         Node* temp = this->head;
 
@@ -133,15 +128,12 @@ int Pop(List *this) {
         this->tail = temp;
         this->size--;
         return value;
-  }
-  return 0;
+    }
+    return 0;
 }
 int Dequeue(List *this) {
     //TODO: напиши меня!
-    if (this->size == NULL) {
-        printf("There are no elements:::");
-        exit(0);
-    }
+    ifzero
     Node* node = this->head;
     int value = node->value;
     this->head = node->next;
@@ -156,9 +148,23 @@ int Dequeue(List *this) {
 
 int Length(const List *this) {
     //TODO: напиши меня!
-
+    return this->size;
 }
 int GetAt(const List *this, int index) {
     //TODO: напиши меня!
-
+    ifzero
+    Node* value = this->head;
+    int i = 0;
+    while (i != index) {
+        if (!(value)) {
+            printf("Нет элементов");
+            exit(0);
+        }
+        value = value->next;
+        i++;
+    }
+    i = 0;
+    if (value) return value->value;
+    printf("Нет элементов");
+    exit(0);
 }
