@@ -1,20 +1,41 @@
-#include "list.h"
 #include <stdio.h>
+#include <stdlib.h>
 
-static void AssertEq(int expected, int actual, const char* msg) {
-  if (expected != actual) {
-    printf("Test failed: %s\n expected %d but got %d\n", msg, expected, actual);
-    exit(-1);
+#include "list.h"
+#include "test.h"
+
+/**
+ * В этом задании не работает кнопка RUN,
+ * так как мы делаем хаки на этапе компиляции.
+ * Чтобы скомпилировать и запустить программы напишите в терминале слева:
+ *
+ * make run_array_list
+ * ИЛИ
+ * make run_linked_list
+ */
+
+void test(void) {
+  // Это тесты. НЕ УДАЛЯЙТЕ ИХ!
+  // Преподаватель будет грустить, если вы удалите тесты T_T.
+  // Тесты проверяют, что ваш код работает правильно.
+  // Если задача решена неправильно,
+  // то в консоли вы увидите ошибку и пояснение.
+  // Сдавайте лабу, когда устраните все ошибки в тестах.
+  // Если возникли трудности, то попросите преподавателя вам помочь ^_^.
+
+  {
+    List* list = NewList();
+    ASSERT_INT(0, ==, Length(list));
+    Append(list, 42);
+    ASSERT_INT(1, ==, Length(list));
+    ASSERT_INT(42, ==, GetAt(list, 0));
+    DestroyList(list);
   }
+
+  // TODO: Здесь куча разных ваших тестов!!!
 }
 
 int main(void) {
-  List* list = NewList();
-  AssertEq(0, Length(list), "empty list length should be zero");
-  Append(list, 42);
-  AssertEq(1, Length(list), "Length([42]) should be 1");
-  AssertEq(42, GetAt(list, 0), "GetAt([42], 0) should be 42");
-  DestroyList(list);
-  
-  //TODO: Здесь куча разных ваших тестов!!!
-}   
+  test();
+  return 0;
+}
