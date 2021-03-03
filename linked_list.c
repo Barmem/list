@@ -2,7 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #define newnode Node* node = malloc(sizeof(Node)); node->value = value;
-#define ifzero if (this->size == 0) { printf("Нет элементов для удаления"); exit(0); }
+#define ifzero if (this->size == 0) { printf("Ошибка:Нет элементов для удаления"); exit(0); }
 // В узле списка хранится само значение value и указатель на следующий узел.
 // Эту структуру пользователи списка не должны видеть, так как она относится к внутренней реализации.
 typedef struct Node_ {
@@ -158,7 +158,7 @@ int GetAt(const List *this, int index) {
     int i = 0;
     while (i != index) {
         if (!(value)) {
-            printf("Нет элементов");
+            printf("Ошибка:Нет элементов");
             exit(0);
         }
         value = value->next;
@@ -166,6 +166,6 @@ int GetAt(const List *this, int index) {
     }
     i = 0;
     if (value) return value->value;
-    printf("Нет элементов");
+    printf("Ошибка:Нет элементов");
     exit(0);
 }
